@@ -10,10 +10,10 @@ function App() {
       <div className="App">
         <Routes>
           {/* Route for the live validation form */}
-          <Route path="/" element={<AuthForm />} />
+          <Route path="/" element={<OnClickValidationForm />} />
 
           {/* Route for the click-based validation form */}
-          <Route path="/on-click-validation" element={<OnClickValidationForm />} />
+          <Route path="/live-validation" element={<AuthForm />} />
         </Routes>
       </div>
     </Router>

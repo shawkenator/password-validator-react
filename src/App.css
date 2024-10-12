@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,28 +7,80 @@
 
 body {
   margin: 0;
-  font-family: 'Inter';
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f0f0f0;
+  background-color: #fff;
+}
+
+.right-2 {
+  right: 12px;
+}
+
+.top-2 {
+  top: 11px;
 }
 
 .error-list {
   list-style-type: disc;
   font-size: 14px;
+  color: #ff443e;
+  list-style-type: none;
+  padding-left: 10px;
 }
 
 .error-list li {
   position: relative;
   padding-left: 3px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
+  line-height: 24px;
+  padding-left: 18px; /* Adds space for the icon */
+}
+
+.error-list li::before {
+  content: "\2716"; /* Unicode for the "x" icon (a small cross) */
+  position: absolute;
+  left: 0;
+  color: #ff443e;
+  font-size: 12px; /* Adjust the size as needed */
+  margin-right: 10px;
 }
 
 .btn {
   border-radius: .325rem;
-  font-family: Inter, Helvetica, sans-serif;
   font-weight: 500;
 }
 
 .password-form-container {
   background-color: #fff;
+  position: relative;
+}
+
+h1 {
+  font-size: 34px;
+  line-height: 2em;
+  color: #111;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 14px;
+}
+
+.text-lg {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 18px;
+  padding-bottom: 16px;
+  padding-top: 0px;
+  line-height: 26px;
+}
+
+.btnmod {
+  margin-top: 16px;
+}
+
+.btn:disabled {
+  cursor: not-allowed !important;
+  opacity: 0.8;
 }

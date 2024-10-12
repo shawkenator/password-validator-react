@@ -1,18 +1,19 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-// Define the type for errors as an array of strings
 type ErrorMessages = string[];
 
 const AuthForm: React.FC = () => {
-    // State hooks for password inputs
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
     const [errors, setErrors] = useState<ErrorMessages>([]);
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
 
-    // Determine if the submit button should be disabled
     const isSubmitDisabled = errors.length > 0 || password === '' || confirmPassword === '';
 
-    // Validation logic 
     const validatePassword = (password: string, confirmPassword: string): ErrorMessages => {
         const newErrors: ErrorMessages = [];
         const specialChars = /[!@#$%^&*()_\-+={[}\]|:;"'<,>.]/;
@@ -27,7 +28,6 @@ const AuthForm: React.FC = () => {
         return newErrors;
     };
 
-    // Handle input changes and live validate
     const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
         setErrors(validatePassword(e.target.value, confirmPassword));
@@ -41,7 +41,15 @@ const AuthForm: React.FC = () => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         if (errors.length === 0) {
-            console.log('Password validated and form submitted!');
+            toast.success('Password validated and form submitted successfully!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     };
 
@@ -49,26 +57,44 @@ const AuthForm: React.FC = () => {
         <div className="password-form-container max-w-md mx-auto mt-10 p-4 border rounded shadow">
             <h1 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>Password Validator</h1>
             <form onSubmit={handleSubmit}>
-                <div className="input-group mb-4">
+                <div className="input-group relative mb-4">
                     <input
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         placeholder="Enter password"
                         value={password}
                         onChange={handlePasswordChange}
                         className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
                         required
                     />
+                    <button 
+                        type="button" 
+                        onClick={() => setShowPassword(!showPassword)} 
+                        className="absolute right-2 top-2 text-gray-600 focus:outline-none"
+                        aria-label={showPassword ? "Hide password" : "Show password"}
+                    >
+                        {showPassword ? <EyeSlashIcon className="h-5 w-5"/> : <EyeIcon className="h-5 w-5"/>}
+                    </button>
                 </div>
-                <div className="input-group mb-4">
+
+                <div className="input-group relative mb-4">
                     <input
-                        type="password"
+                        type={showConfirmPassword ? "text" : "password"}
                         placeholder="Confirm password"
                         value={confirmPassword}
                         onChange={handleConfirmPasswordChange}
                         className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
                         required
                     />
+                    <button 
+                        type="button" 
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)} 
+                        className="absolute right-2 top-2 text-gray-600 focus:outline-none"
+                        aria-label={showConfirmPassword ? "Hide confirm password" : "Show confirm password"}
+                    >
+                        {showConfirmPassword ? <EyeSlashIcon className="h-5 w-5"/> : <EyeIcon className="h-5 w-5"/>}
+                    </button>
                 </div>
+
                 <button 
                     type="submit" 
                     disabled={isSubmitDisabled} 
@@ -77,6 +103,9 @@ const AuthForm: React.FC = () => {
                     Submit
                 </button>
             </form>
+
+            <ToastContainer />
+            
             {errors.length > 0 && (
                 <ul className="error-list mt-4 text-red-500 list-disc pl-5" style={{ fontFamily: 'Inter, sans-serif' }}>
                     {errors.map((error, index) => (

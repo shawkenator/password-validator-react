@@ -5,6 +5,6 @@ export enum PasswordMessage {
     NUMBER = 'Password must contain at least one number.',
     SPECIAL_CHAR = 'Password must contain at least one special character.',
     MISMATCH = 'Passwords do not match.',
-    SUCCESS = 'Password validated and form submitted successfully!',
+    SUCCESS = 'Password validated and submitted successfully!',
     FAIL = 'Please ensure your password meets the criteria.'
 }

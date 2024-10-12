@@ -8,11 +8,27 @@ Sample can be viewed at: https://aweber-pw-validator.web.app/
 
 ## Features
 
-*   User-friendly password validation form
-    
-*   Real-time feedback on password strength
-    
-*   Toast notifications for user actions
+### Live Validation (User-Friendly Approach)
+- This form performs real-time validation as the user types, providing immediate feedback. This offers a smoother and more intuitive experience since users are notified of potential errors (e.g., password length, mismatches) before submitting the form.
+- The benefits of live validation include reduced friction, fewer mistakes, and a more modern, interactive interface.
+
+### On-Click Validation (Task-Required Approach)
+- In this form, validation is only triggered when the user clicks the submit button. The user can enter both passwords without receiving feedback until they choose to submit, at which point all validation errors (e.g., password too short, passwords not matching) are displayed.
+- While this approach might be considered more clunky from a UX perspective, it strictly adheres to the original project requirements of validation happening only on form submission.
+
+### Why Two Versions?
+- I initially optimized the password validation experience by adding live, real-time feedback for users. From a usability standpoint, this is more aligned with modern web applications, offering a better experience for users. However, since the task explicitly required validation to occur on-click, I decided to maintain both versions:
+  - **Live Validation** – for a more polished, user-friendly experience.
+  - **On-Click Validation** – to fulfill the task's exact requirements.
+- Each of these can be accessed via their respective URLs within the app:
+  - `/` for Live Validation.
+  - `/on-click-validation` for On-Click Validation.
+
+### How It Works
+- **Live Validation**: As the user types in the password fields, validation functions are called on every change, updating error messages dynamically.
+- **On-Click Validation**: All validation checks occur only when the user submits the form. If any issues are found, they're displayed after submission.
+
+This setup allows for flexibility in fulfilling different needs, providing both a smooth user experience and adherence to specific task requirements.
     
 ## Getting Started
 

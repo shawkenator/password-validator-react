@@ -1,12 +1,22 @@
 import React from 'react';
-import './App.css';
-import AuthForm from './authform';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AuthForm from './authform'
+import OnClickValidationForm from './authform-ocv';
+import './App.css'; 
 
 function App() {
   return (
-    <div className="App">
-      <AuthForm />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          {/* Route for the live validation form */}
+          <Route path="/" element={<AuthForm />} />
+
+          {/* Route for the click-based validation form */}
+          <Route path="/on-click-validation" element={<OnClickValidationForm />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

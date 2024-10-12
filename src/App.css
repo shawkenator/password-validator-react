@@ -13,6 +13,14 @@ body {
   background-color: #fff;
 }
 
+.right-2 {
+  right: 12px;
+}
+
+.top-2 {
+  top: 11px;
+}
+
 .error-list {
   list-style-type: disc;
   font-size: 14px;

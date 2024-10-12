@@ -38,40 +38,47 @@ const AuthForm: React.FC = () => {
         setErrors(validatePassword(password, e.target.value));
     };
 
-    // Handle form submission
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        if (errors.length > 0) {
-            return; // Additional verification return if there are validation errors
+        if (errors.length === 0) {
+            console.log('Password validated and form submitted!');
         }
-        console.log('Password validated and form submitted!');
     };
 
     return (
-        <div className="password-form-container">
+        <div className="password-form-container max-w-md mx-auto mt-10 p-4 border rounded shadow">
+            <h1 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>Password Validator</h1>
             <form onSubmit={handleSubmit}>
-                <div className="input-group">
+                <div className="input-group mb-4">
                     <input
                         type="password"
                         placeholder="Enter password"
                         value={password}
                         onChange={handlePasswordChange}
+                        className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
                         required
                     />
                 </div>
-                <div className="input-group">
+                <div className="input-group mb-4">
                     <input
                         type="password"
                         placeholder="Confirm password"
                         value={confirmPassword}
                         onChange={handleConfirmPasswordChange}
+                        className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
                         required
                     />
                 </div>
-                <button type="submit" disabled={isSubmitDisabled}>Submit</button>
+                <button 
+                    type="submit" 
+                    disabled={isSubmitDisabled} 
+                    className={`btn w-full p-2 text-white rounded ${isSubmitDisabled ? 'bg-gray-400' : 'bg-[#0c7ac0] hover:bg-[#085586]'}`}
+                >
+                    Submit
+                </button>
             </form>
             {errors.length > 0 && (
-                <ul className="error-list">
+                <ul className="error-list mt-4 text-red-500 list-disc pl-5" style={{ fontFamily: 'Inter, sans-serif' }}>
                     {errors.map((error, index) => (
                         <li key={index}>{error}</li>
                     ))}

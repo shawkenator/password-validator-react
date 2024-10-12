@@ -4,6 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  margin: 0;
+  font-family: 'Inter';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f0f0;
+}
+
 .error-list {
   list-style-type: disc;
   font-size: 14px;
@@ -20,3 +28,6 @@
   font-weight: 500;
 }
 
+.password-form-container {
+  background-color: #fff;
+}

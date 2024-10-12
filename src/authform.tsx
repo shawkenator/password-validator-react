@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { PasswordMessage } from './passwordValidation'; // Adjust the path as necessary
 
 type ErrorMessages = string[];
 
@@ -18,12 +19,12 @@ const AuthForm: React.FC = () => {
         const newErrors: ErrorMessages = [];
         const specialChars = /[!@#$%^&*()_\-+={[}\]|:;"'<,>.]/;
 
-        if (password.length < 6) newErrors.push('Password must be at least 6 characters.');
-        if (!/[A-Z]/.test(password)) newErrors.push('Password must contain at least one uppercase character.');
-        if (!/[a-z]/.test(password)) newErrors.push('Password must contain at least one lowercase character.');
-        if (!/\d/.test(password)) newErrors.push('Password must contain at least one number.');
-        if (!specialChars.test(password)) newErrors.push('Password must contain at least one special character.');
-        if (password !== confirmPassword) newErrors.push('Passwords do not match.');
+        if (password.length < 6) newErrors.push(PasswordMessage.LENGTH);
+        if (!/[A-Z]/.test(password)) newErrors.push(PasswordMessage.UPPERCASE);
+        if (!/[a-z]/.test(password)) newErrors.push(PasswordMessage.LOWERCASE);
+        if (!/\d/.test(password)) newErrors.push(PasswordMessage.NUMBER);
+        if (!specialChars.test(password)) newErrors.push(PasswordMessage.SPECIAL_CHAR);
+        if (password !== confirmPassword) newErrors.push(PasswordMessage.MISMATCH);
 
         return newErrors;
     };
@@ -41,7 +42,7 @@ const AuthForm: React.FC = () => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         if (errors.length === 0) {
-            toast.success('Password validated and form submitted successfully!', {
+            toast.success(PasswordMessage.SUCCESS, {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: true,

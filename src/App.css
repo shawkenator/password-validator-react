@@ -84,3 +84,10 @@ h2 {
   cursor: not-allowed !important;
   opacity: 0.8;
 }
+
+.footer-link {
+  margin-top: auto;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 13px;
+}

@@ -38,9 +38,9 @@ Prerequisites
 
 Installation
 
-1.  git clone [https://github.com/yourusername/your-repo-name.git](https://github.com/yourusername/your-repo-name.git)
+1.  git clone [https://github.com/shawkenator/password-validator-react.git](https://github.com/shawkenator/password-validator-react.git)
     
-2.  cd your-repo-name
+2.  cd password-validator-react
     
 3.  npm install
     

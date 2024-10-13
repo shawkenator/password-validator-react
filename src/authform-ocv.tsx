@@ -66,7 +66,7 @@ const OnClickValidationForm: React.FC = () => {
 
     return (
         <div className="flex flex-col justify-between h-screen">
-            <div className="bg-white rounded-lg w-128 mt-[11%]">
+            <div className="bg-white rounded-lg w-128 mt-[8%]">
                 <div className="password-form-container max-w-md mx-auto rounded p-6">
                     <h1>Password Validator</h1>
                     <h2 className="text-lg text-gray-600 mb-4">Please enter and confirm your password to continue</h2>

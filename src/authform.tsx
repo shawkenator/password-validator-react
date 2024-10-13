@@ -57,7 +57,7 @@ const AuthForm: React.FC = () => {
 
     return (
         <div className="flex flex-col justify-between h-screen">
-            <div className="bg-white rounded-lg w-128 mt-[11%]">
+            <div className="bg-white rounded-lg w-128 mt-[8%]">
                 <div className="password-form-container max-w-md mx-auto rounded p-6">
                     <h1>Password Validator</h1>
                     <h2 className="text-lg text-gray-600 mb-4">Please enter and confirm your password to continue</h2>
@@ -103,11 +103,14 @@ const AuthForm: React.FC = () => {
                         </div>
 
                         <button
+                            disabled={isSubmitDisabled}
                             type="submit"
-                            className={`btn w-full p-2 text-white rounded btnmod bg-[#0c7ac0] hover:bg-[#085586]`}
+                            className={`btn w-full p-2 text-white rounded btnmod ${isSubmitDisabled ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#0c7ac0] hover:bg-[#085586]'
+                                }`}
                         >
                             Submit
                         </button>
+
                     </form>
 
                     <ToastContainer />
